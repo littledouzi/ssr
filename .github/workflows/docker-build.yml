@@ -41,7 +41,7 @@ jobs:
           echo ${{ secrets.ANSIBLE_VAULT }} > vault_pass.txt
           echo ~~~~~~
           whoami
-          cat ANSIBLE_VAULT
+          cat vault_pass.txt
           echo ~~~~~~
           export ANSIBLE_VAULT_PASSWORD_FILE=vault_pass.txt
           ansible-vault decrypt host.pem
