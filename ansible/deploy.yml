@@ -1,0 +1,18 @@
+- name: deploy ssr
+  hosts: host
+  gather_facts: no
+  vars:
+    ansible_connection: ssh
+    ansible_user: ubuntu
+    ansible_ssh_private_key_file: ./host.pem
+
+  tasks:
+    - name: stop the old container
+      shell: docker container stop ssr
+      ignore_errors: yes
+
+    - name: update docker image
+      shell: docker image pull littledouzi/ssr:latest
+
+    - name: create new container
+      shell: docker container run -d -p 51100-51300:51100-51300/tcp --name ssr littledouzi/ssr:latest python server.py
