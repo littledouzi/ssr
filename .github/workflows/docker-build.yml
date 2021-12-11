@@ -39,10 +39,10 @@ jobs:
           cd ansible/
           pip install ansible
           echo ${{ secrets.ANSIBLE_VAULT }} > vault_pass.txt
-          echo~~~~~~
+          echo ~~~~~~
           whoami
           cat ANSIBLE_VAULT
-          echo~~~~~~
+          echo ~~~~~~
           export ANSIBLE_VAULT_PASSWORD_FILE=vault_pass.txt
           ansible-vault decrypt host.pem
           cat host.pem
