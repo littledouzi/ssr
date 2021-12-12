@@ -15,4 +15,4 @@
       shell: docker image pull littledouzi/ssr:latest
 
     - name: create new container
-      shell: docker container run -d -p 51100-51300:51100-51300/tcp --name ssr littledouzi/ssr:latest python server.py
+      shell: docker container run -d -p 51100-51299:51100-51299/tcp --name ssr littledouzi/ssr:latest python server.py
