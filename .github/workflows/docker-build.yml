@@ -32,12 +32,13 @@ jobs:
     runs-on: ubuntu-latest
     # needs: Docker-Build-Push
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: deploy to host
+      - name: Run sshpass commands
+        uses: matheusvanzan/sshpass-action@v2
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          user: ${{ secrets.SERVER_USER }}
+          pass: ${{ secrets.SERVER_PASS }}
         run: |
-          cd ansible/
-          pip install ansible
-          apt update
-          apt -y install sshpass
-          ansible-playbook -i hosts deploy.yml
+          docker container stop ssr
+          docker image pull littledouzi/ssr:latest
+          docker container run -d -p 51100-51300:51100-51300/tcp --name ssr littledouzi/ssr:latest python server.py
