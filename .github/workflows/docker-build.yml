@@ -38,10 +38,9 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}
           user: ${{ secrets.SERVER_USER }}
           pass: ${{ secrets.SERVER_PASS }}
-      - name: deploy to host
-        run: |
-          hostname
-          ifconfig
-          docker container stop ssr || true
-          docker image pull littledouzi/ssr:latest
-          docker container run -d -p 51100-51300:51100-51300/tcp --name ssr littledouzi/ssr:latest python server.py
+          run: |
+            hostname
+            ifconfig
+            docker container stop ssr || true
+            docker image pull littledouzi/ssr:latest
+            docker container run -d -p 51100-51300:51100-51300/tcp --name ssr littledouzi/ssr:latest python server.py
