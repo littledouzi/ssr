@@ -38,6 +38,7 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}
           user: ${{ secrets.SERVER_USER }}
           pass: ${{ secrets.SERVER_PASS }}
+      -name: deploy to host
         run: |
           docker container stop ssr
           docker image pull littledouzi/ssr:latest
