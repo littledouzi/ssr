@@ -42,4 +42,4 @@ jobs:
           run: |
             docker container stop ssr || true
             docker image pull littledouzi/ssr:latest
-            docker container run -d -p 51130:51130 --name ssr littledouzi/ssr:latest python server.py
+            docker container run -d -p 51132:51132 --name ssr littledouzi/ssr:latest python server.py
