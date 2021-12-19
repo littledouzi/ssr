@@ -35,11 +35,16 @@ jobs:
       - name: Run sshpass commands
         uses: matheusvanzan/sshpass-action@v2
         with:
-          host: 149.248.53.204
+          host: 119.28.60.229
           port: ${{ secrets.SERVER_PORT }}
           user: ${{ secrets.SERVER_USER }}
           pass: ${{ secrets.SERVER_PASS }}
           run: |
+            curl -fsSL get.docker.com -o get-docker.sh
+            chmod +x get-docker.sh
+            ./get-docker.sh
+            systemctl start docker
+            docker version 
             docker container stop ssr || true
             docker image pull littledouzi/ssr:latest
-            docker container run -d -p 51121:51121 --name ssr littledouzi/ssr:latest python server.py
+            docker container run -d -p 51272:51272 --name ssr littledouzi/ssr:latest python server.py
