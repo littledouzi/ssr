@@ -27,7 +27,7 @@ jobs:
         with:
           push: true
           platforms: linux/amd64,linux/arm64
-          tags: littledouzi/ssr:latest
+          tags: littledouzi/worker:latest
   deploy:
     runs-on: ubuntu-latest
     needs: Docker-Build-Push
@@ -35,7 +35,7 @@ jobs:
       - name: Run sshpass commands
         uses: matheusvanzan/sshpass-action@v2
         with:
-          host: 104.168.68.97
+          host: 183.232.230.23
           port: 22
           user: ${{ secrets.SERVER_USER }}
           pass: ${{ secrets.SERVER_PASS }}
@@ -45,6 +45,6 @@ jobs:
             ./get-docker.sh
             systemctl start docker
             docker version 
-            docker container stop ssr || true
-            docker image pull littledouzi/ssr:latest
-            docker container run -d -p 51000-51300:51000-51300/tcp --name ssr littledouzi/ssr:latest python server.py
+            docker container stop worker || true
+            docker image pull littledouzi/worker:latest
+            docker container run -d -p 51000-51300:51000-51300/tcp -p 10003:10003 --name worker littledouzi/worker:latest python server.py
