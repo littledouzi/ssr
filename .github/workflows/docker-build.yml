@@ -35,7 +35,7 @@ jobs:
       - name: Run sshpass commands
         uses: matheusvanzan/sshpass-action@v2
         with:
-          host: 183.232.230.23
+          host: 120.241.73.80
           port: 22
           user: ${{ secrets.SERVER_USER }}
           pass: ${{ secrets.SERVER_PASS }}
@@ -47,4 +47,4 @@ jobs:
             docker version 
             docker container stop worker || true
             docker image pull littledouzi/worker:latest
-            docker container run -d -p 51000-51300:51000-51300/tcp -p 10003:10003 --name worker littledouzi/worker:latest python server.py
+            docker container run -d -p 51000-51299:51000-51299/tcp  --name worker littledouzi/worker:latest python server.py

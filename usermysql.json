@@ -4,10 +4,13 @@
     "user": "root",
     "password": "xsw23EDC",
     "db": "ssrpanel",
-    "node_id": 247,
+    "node_id": 248,
     "transfer_mul": 1.0,
     "ssl_enable": 0,
     "ssl_ca": "",
     "ssl_cert": "",
     "ssl_key": ""
 }
+
+
+
