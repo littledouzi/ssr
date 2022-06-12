@@ -35,7 +35,7 @@ jobs:
       - name: Run sshpass commands
         uses: matheusvanzan/sshpass-action@v2
         with:
-          host: 107.174.181.68
+          host: 47.254.43.0
           port: 22
           user: ${{ secrets.SERVER_USER }}
           pass: ${{ secrets.SERVER_PASS }}
